@@ -1,1 +1,1 @@
-declare const myName = "Tyler";
+export {};
