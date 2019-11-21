@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+ 
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresVolume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=test123
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=catalog
+  
+  pgAdmin:
+    image: dpage/pgadmin4
+    ports:
+      - '5050:80'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@test.com
+      - PGADMIN_DEFAULT_PASSWORD=test123
+    logging:
+      driver: none
+
+volumes:
+  postgresVolume:
+    external: true
