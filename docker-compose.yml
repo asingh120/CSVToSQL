@@ -1,7 +1,6 @@
 version: '3'
 
 services:
- 
   db:
     image: postgres
     ports:
@@ -12,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=test123
       - POSTGRES_USER=admin
       - POSTGRES_DB=catalog
-  
+
   pgAdmin:
     image: dpage/pgadmin4
     ports:
@@ -22,6 +21,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=test123
     logging:
       driver: none
+    volumes:
+      - ./pgAdmin:/var/lib/pgadmin
 
 volumes:
   postgresVolume:
